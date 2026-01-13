@@ -1,13 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(135deg, #ff758c, #ff7eb3);
-  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   overflow: hidden;
-  color: white;
+  color: #fff;
 }
 
 .screen {
@@ -15,58 +19,71 @@ body {
   text-align: center;
   position: relative;
   width: 100%;
-  max-width: 500px;
-  padding: 20px;
+  max-width: 420px;
+  padding: 24px;
   z-index: 2;
 }
-
 
 .screen.active {
   display: block;
 }
 
+h1 {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
 button {
-  padding: 15px 30px;
+  padding: 14px 28px;
   border: none;
   border-radius: 30px;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
-  margin: 15px;
 }
 
-#yes {
-  background: #ff2e63;
-  color: white;
+#continue {
+  background: #fff;
+  color: #333;
 }
 
-#no {
-  background: white;
-  color: black;
-  position: absolute;
-}
-
-#final {
-  font-size: 24px;
-  margin-top: 30px;
-  animation: fadeIn 1.2s ease;
-}
-.heart {
-  position: fixed;
-  bottom: -20px;
-  font-size: 24px;
-  animation: floatUp linear infinite;
-  opacity: 0.8;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
 .buttons {
   position: relative;
   height: 120px;
   margin-top: 30px;
 }
+
+#yes {
+  background: #ff4d6d;
+  color: white;
+}
+
+#no {
+  background: white;
+  color: #333;
+  position: absolute;
+  left: 60%;
+  top: 40px;
+}
+
+#final {
+  margin-top: 30px;
+  font-size: 20px;
+  line-height: 1.4;
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Camera flash */
 #flash {
   position: fixed;
   inset: 0;
@@ -77,10 +94,10 @@ button {
 }
 
 .flash {
-  animation: cameraFlash 0.4s ease;
+  animation: flash 0.4s ease;
 }
 
-@keyframes cameraFlash {
+@keyframes flash {
   0% { opacity: 0; }
   50% { opacity: 1; }
   100% { opacity: 0; }
