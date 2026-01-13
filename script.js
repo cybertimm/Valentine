@@ -26,10 +26,14 @@ noBtn.addEventListener("mouseover", () => {
 });
 
 document.getElementById("yes").addEventListener("click", () => {
-  document.getElementById("final").innerHTML =
-    "YAY!!! 💕🥰 I knew you'd say yes!";
+  document.getElementById("final").innerHTML = `
+    <p>Bukola 🥺💕</p>
+    <p>You just made my heart very happy.</p>
+    <p>Happy Valentine’s Day ❤️</p>
+  `;
   startConfetti();
 });
+
 
 const canvas = document.getElementById("confetti");
 const ctx = canvas.getContext("2d");
