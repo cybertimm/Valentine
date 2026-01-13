@@ -20,10 +20,20 @@ function nextScreen() {
 }
 
 const noBtn = document.getElementById("no");
-noBtn.addEventListener("mouseover", () => {
-  noBtn.style.left = Math.random() * 80 + "vw";
-  noBtn.style.top = Math.random() * 80 + "vh";
-});
+const buttonsBox = document.querySelector(".buttons");
+
+noBtn.addEventListener("mouseenter", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
+
+function moveNo() {
+  const boxRect = buttonsBox.getBoundingClientRect();
+  const x = Math.random() * (boxRect.width - 100);
+  const y = Math.random() * (boxRect.height - 50);
+
+  noBtn.style.left = `${x}px`;
+  noBtn.style.top = `${y}px`;
+}
+;
 
 document.getElementById("yes").addEventListener("click", () => {
   document.getElementById("final").innerHTML = `
