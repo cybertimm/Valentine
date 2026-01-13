@@ -13,7 +13,13 @@ body {
 .screen {
   display: none;
   text-align: center;
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  z-index: 2;
 }
+
 
 .screen.active {
   display: block;
@@ -56,4 +62,10 @@ button {
     transform: translateY(-110vh);
     opacity: 0;
   }
+}
+
+.buttons {
+  position: relative;
+  height: 120px;
+  margin-top: 30px;
 }
