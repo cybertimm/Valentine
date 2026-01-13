@@ -1,4 +1,4 @@
-const text = "Hey my love... I have something special to ask you ❤️";
+const text = "Hey Bukola... 💕 I’ve been smiling all day thinking about you.\n\nI have something special to ask you ❤️";
 let i = 0;
 const speed = 70;
 const typeEl = document.getElementById("typewriter");
@@ -62,3 +62,16 @@ function draw() {
   });
   requestAnimationFrame(draw);
 }
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 7000);
+}
+
+setInterval(createHeart, 500);
