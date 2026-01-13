@@ -36,13 +36,22 @@ function moveNo() {
 ;
 
 document.getElementById("yes").addEventListener("click", () => {
-  document.getElementById("final").innerHTML = `
-    <p>Bukola 🥺💕</p>
-    <p>You just made my heart very happy.</p>
-    <p>Happy Valentine’s Day ❤️</p>
-  `;
-  startConfetti();
+  const flash = document.getElementById("flash");
+  const shutter = document.getElementById("shutter");
+
+  flash.classList.add("flash");
+  shutter && shutter.play();
+
+  setTimeout(() => {
+    document.getElementById("final").innerHTML = `
+      <p>Bukola 🥺💕</p>
+      <p>You just made my heart very happy.</p>
+      <p>Happy Valentine’s Day ❤️</p>
+    `;
+    startConfetti();
+  }, 400);
 });
+;
 
 
 const canvas = document.getElementById("confetti");
