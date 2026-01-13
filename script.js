@@ -1,100 +1,53 @@
-const text = "Hey Bukola... 💕 I’ve been smiling all day thinking about you.\n\nI have something special to ask you ❤️";
-let i = 0;
-const speed = 70;
+// Typewriter intro
+const introText =
+  "Hey Bukola… 🤍\n\nI’ve been meaning to ask you something.";
 const typeEl = document.getElementById("typewriter");
-const music = document.getElementById("music");
+let i = 0;
 
 function typeWriter() {
-  if (i < text.length) {
-    typeEl.innerHTML += text.charAt(i);
+  if (i < introText.length) {
+    typeEl.innerHTML += introText.charAt(i) === "\n" ? "<br>" : introText.charAt(i);
     i++;
-    setTimeout(typeWriter, speed);
+    setTimeout(typeWriter, 60);
   }
 }
 typeWriter();
 
-function nextScreen() {
-  music.play();
+// Screen switch
+document.getElementById("continue").addEventListener("click", () => {
   document.getElementById("screen1").classList.remove("active");
   document.getElementById("screen2").classList.add("active");
-}
+});
 
+// NO button movement (mobile + desktop safe)
 const noBtn = document.getElementById("no");
 const buttonsBox = document.querySelector(".buttons");
 
-noBtn.addEventListener("mouseenter", moveNo);
-noBtn.addEventListener("touchstart", moveNo);
-
 function moveNo() {
-  const boxRect = buttonsBox.getBoundingClientRect();
-  const x = Math.random() * (boxRect.width - 100);
-  const y = Math.random() * (boxRect.height - 50);
+  const box = buttonsBox.getBoundingClientRect();
+  const x = Math.random() * (box.width - 90);
+  const y = Math.random() * (box.height - 40);
 
   noBtn.style.left = `${x}px`;
   noBtn.style.top = `${y}px`;
 }
-;
 
+noBtn.addEventListener("mouseenter", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
+
+// YES button — camera flash + your message
 document.getElementById("yes").addEventListener("click", () => {
   const flash = document.getElementById("flash");
   const shutter = document.getElementById("shutter");
 
   flash.classList.add("flash");
-  shutter && shutter.play();
+  if (shutter) shutter.play();
 
   setTimeout(() => {
     document.getElementById("final").innerHTML = `
-      <p>Bukola 🥺💕</p>
-      <p>You just made my heart very happy.</p>
-      <p>Happy Valentine’s Day ❤️</p>
+      <p><strong>Osupuru.</strong></p>
+      <p>It’s not like you had any choice,</p>
+      <p>but it makes me so happy you said yes 🤍</p>
     `;
-    startConfetti();
   }, 400);
 });
-;
-
-
-const canvas = document.getElementById("confetti");
-const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let pieces = [];
-
-function startConfetti() {
-  for (let i = 0; i < 300; i++) {
-    pieces.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 6 + 2,
-      d: Math.random() * 5 + 1,
-    });
-  }
-  draw();
-}
-
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  pieces.forEach(p => {
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fillStyle = "white";
-    ctx.fill();
-    p.y += p.d;
-    if (p.y > canvas.height) p.y = 0;
-  });
-  requestAnimationFrame(draw);
-}
-
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.classList.add("heart");
-  heart.innerHTML = "💖";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = Math.random() * 3 + 4 + "s";
-  document.body.appendChild(heart);
-
-  setTimeout(() => heart.remove(), 7000);
-}
-
-setInterval(createHeart, 500);
