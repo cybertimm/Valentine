@@ -45,8 +45,8 @@ document.getElementById("yes").addEventListener("click", () => {
 
   setTimeout(() => {
     document.getElementById("final").innerHTML = `
-      <p><strong>Osupuru.</strong></p>
-      <p>It’s not like you had any choice,</p>
+      <p><strong>Osupuru!!!.</strong></p>
+      <p>It’s not like you had any choice😂😂,</p>
       <p>but it makes me so happy you said yes 🤍</p>
     `;
   }, 400);
